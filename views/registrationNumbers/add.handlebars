@@ -1,0 +1,44 @@
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Sedgwick+Ave" rel="stylesheet">
+</head>
+
+<body align="center">
+    <h1> !!!Mc Vister's numberplates Registrations!!!</h1>
+    <div class="formy">
+        <form class="inputs" align="center" action="/registrationNumbers" method="post">
+
+            <input id="enter" type="text" name="plates" pattern=".{10,10}" maxlength="10">
+            <input class="submits" type="submit" value="Add Plate">
+            <a type="submit" href="/registrationNumbers/reset">reset</a>
+            <br>
+            <div class="error">
+                {{messages.error}}
+                <br>
+            </div>
+        </form>
+        <form class="filter" action="/registrationNumbers/filter" method="post">
+
+            <input type="radio" name="loc" value="CA"> Cape Town
+            <input type="radio" name="loc" value="CY"> Bellville
+            <input type="radio" name="loc" value="CJ"> Paarl
+            <input type="radio" name="loc" value="CL"> Stellenbosch
+            <input type="radio" name="loc" value=""> All
+            <input class="submits" type="submit" value="Filter">
+        </form>
+    </div>
+    <hr>
+
+    <div class="lists" <ul align="center">
+        <ul align="center">
+        {{#each enteredPlates}}
+            <li> {{this.numberplates}} </li>
+        {{/each}}
+        </ul>
+
+        <ul align="center">
+            {{#each forTown}}
+                <li> {{this.numberplates}} </li>
+            {{/each}}
+        </ul>
+        <div>
